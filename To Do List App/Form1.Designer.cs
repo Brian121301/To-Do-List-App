@@ -38,6 +38,8 @@
             this.deleteButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.toDoListView = new System.Windows.Forms.DataGridView();
+            this.priorityBox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.toDoListView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,6 +102,7 @@
             this.newButton.TabIndex = 5;
             this.newButton.Text = "New";
             this.newButton.UseVisualStyleBackColor = true;
+            this.newButton.Click += new System.EventHandler(this.newButton_Click);
             // 
             // editButton
             // 
@@ -109,6 +112,7 @@
             this.editButton.TabIndex = 6;
             this.editButton.Text = "Edit";
             this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
             // deleteButton
             // 
@@ -118,6 +122,7 @@
             this.deleteButton.TabIndex = 7;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // saveButton
             // 
@@ -138,12 +143,37 @@
             this.toDoListView.Size = new System.Drawing.Size(1042, 342);
             this.toDoListView.TabIndex = 9;
             // 
+            // priorityBox
+            // 
+            this.priorityBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.priorityBox.FormattingEnabled = true;
+            this.priorityBox.Items.AddRange(new object[] {
+            "!",
+            "! !",
+            "! ! !"});
+            this.priorityBox.Location = new System.Drawing.Point(686, 100);
+            this.priorityBox.Name = "priorityBox";
+            this.priorityBox.Size = new System.Drawing.Size(121, 21);
+            this.priorityBox.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(683, 82);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Priority";
+            // 
             // ToDoList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(1062, 606);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.priorityBox);
             this.Controls.Add(this.toDoListView);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.deleteButton);
@@ -175,6 +205,8 @@
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.DataGridView toDoListView;
+        private System.Windows.Forms.ComboBox priorityBox;
+        private System.Windows.Forms.Label label1;
     }
 }
 
