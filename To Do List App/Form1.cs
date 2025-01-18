@@ -25,6 +25,7 @@ namespace To_Do_List_App
             // Create Columns
             todoList.Columns.Add("Title");
             todoList.Columns.Add("Description");
+            todoList.Columns.Add("Priority");
 
             //Point our datagridview to our datasource
             toDoListView.DataSource = todoList;
@@ -39,6 +40,7 @@ namespace To_Do_List_App
         {
             titleInput.Text = string.Empty;
             descInput.Text = string.Empty;
+            priorityBox.Text = string.Empty;
         }
 
         private void editButton_Click(object sender, EventArgs e)
@@ -48,18 +50,39 @@ namespace To_Do_List_App
             //Fill text fields with data from table
             titleInput.Text = todoList.Rows[toDoListView.CurrentCell.RowIndex].ItemArray[0].ToString();
             descInput.Text = todoList.Rows[toDoListView.CurrentCell.RowIndex].ItemArray[1].ToString();
+            priorityBox.Text = todoList.Rows[toDoListView.CurrentCell.RowIndex].ItemArray[2].ToString();
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
             try
             {
-
+                todoList.Rows[toDoListView.CurrentCell.RowIndex].Delete();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.ToString());
             }
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            if (isEditing)
+            {
+                todoList.Rows[toDoListView.CurrentCell.RowIndex]["Title"] = titleInput.Text;
+                todoList.Rows[toDoListView.CurrentCell.RowIndex]["Description"] = descInput.Text;
+                todoList.Rows[toDoListView.CurrentCell.RowIndex]["Priority"] = priorityBox.Text;
+                isEditing = false;
+            }
+            else
+            {
+                todoList.Rows.Add(titleInput.Text, descInput.Text, priorityBox.Text);
+            }
+
+            // Clear fields
+            titleInput.Text = string.Empty;
+            descInput.Text = string.Empty;
+            priorityBox.Text = string.Empty;
         }
     }
 }
